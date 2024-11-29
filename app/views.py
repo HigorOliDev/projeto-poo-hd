@@ -92,6 +92,23 @@ def editarTurmas(request, id):
         # Renderiza o formulário com os dados do professor
         return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
 
+def editarHorarios(request, id):
+    horarios =Horario(listaHorarios, id='id')
+ 
+    if request.method == "POST":
+       # Atualiza os campos do professor com os dados enviados
+        horarios.nome = request.POST.get("nome")
+        horarios.sala = request.POST.get("Sala")
+        horarios.ano = request.POST.get("Ano")  
+
+        horarios.save()
+        return redirect("listahorarios")  # Redireciona após salvar
+   
+    else:
+        # Renderiza o formulário com os dados do professor
+        return render(request, 'editarhorarios.html', {'dadoshoraios': Horario})
+
+
 # Deleta os objetos -----------   
 def deletarAlunos(request, id):
     aluno = Aluno.objects.get(id=id)
