@@ -30,7 +30,8 @@ def editarAlunos(request, id):
         # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
-        aluno.turma = request.POST.get("turma")
+        aluno.turma = Turma.objects.get(id=int(request.POST.get("turma")))
+        #print(request.POST.get("turma"))
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
         # Salva as alterações
@@ -117,6 +118,3 @@ def deletarHorarios(request, id):
     horarios.delete()
     return redirect('listaHorarios')
 
-#tentativa de deixar o template de login em 1°
-def Login(request):
-    return render(request, 'Login.html')  

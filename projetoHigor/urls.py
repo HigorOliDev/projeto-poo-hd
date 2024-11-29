@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index),
-    path('gerenciar.html',Gerenciar),
+    path('gerenciar',Gerenciar,name='gerenciar'),
     
    
     path('listaAlunos',listaAlunos,name="listaAlunos"),

@@ -3,14 +3,16 @@
     <label>Nome</label>
     <input type="text"name="nome" value="{{dadosAluno.nome}}"/> 
    
-    <label>CPF</label>
+    <label>Matricula</label>
     <input type="text"name="matricula" value="{{dadosAluno.matricula}}"/>
    
-    <label>Endereço</label>
-    <input type="text"name="turma" value="{{dadosAluno.turma}}"/>
+    <label>Turma</label>
+    <select name="turma">
+        <option value="{{dadosAluno.turma.id}}">{{dadosAluno.turma.nome}}</option>
+    </select> 
    
     <label>Data Nascimento</label>
-    <input type="date"name="data_nascimento" value="{{dadosAluno.data_nascimento|date:'Y-m-d'}}"/>
+    <input type="date" name="data_nascimento" value="{{dadosAluno.data_nascimento|date:'Y-m-d'}}"/>
    
     <input type="submit" value="atualizar"/>
    </form>
