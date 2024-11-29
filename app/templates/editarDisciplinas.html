@@ -1,0 +1,13 @@
+<form method="POST"> <!--os métodos disponiveis são GET e POST, os dois funcinam para enviar dados, o POST envia os dados encapsulados no request-->
+    {% csrf_token %}
+    <label>professor</label>
+    <input type="text"name="professor" value="{{dadosDisciplinas.professor}}"/> 
+   
+    <label>Nome</label>
+    <input type="text"name="nome" value="{{dadosDisciplinas.nome}}"/>
+   
+    <label>codigo_disciplina</label>
+    <input type="number"name="codigo_disciplina" value="{{dadosDisciplinas.codigo_disciplina}}"/>
+   
+    <input type="submit" value="atualizar"/>
+   </form>

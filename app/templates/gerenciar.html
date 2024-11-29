@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento Escolar</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #28A745;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #ffffff;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #0056b3;
+        }
+
+        .navbar .btn {
+            padding: 5px 10px;
+            background-color: #0056b3;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .btn:hover {
+            background-color: #003d82;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .card-content h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content button {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card-content button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">Logo</a>
+           
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#" class="btn">Sair</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Gerenciar</h1>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.zbdQ3F_aM_tvFPRo09LyRQHaHa?w=173&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Alunos">
+                <div class="card-content">
+                    <h2>Alunos</h2>
+                    <a href="{%url 'listaAlunos'%}"><button>Visualizar</button></a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.l67uL0sSEP4IUxTt7JMwuwHaHa?w=215&h=215&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Professores">
+                <div class="card-content">
+                    <h2>Professores</h2>
+                    <a href="{%url 'listaProfessores'%}"><button>Visualizar</button></a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.PdUntnUTG-t1enRaV6pIFwHaHa?w=216&h=216&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Matérias">
+                <div class="card-content">
+                    <h2>Disciplinas</h2>
+                    <a href="{%url 'listaDisciplinas'%}"><button>Visualizar</button></a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.LcRBNcOx4tiwx5b0cvTcKwHaHa?w=206&h=206&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Horários">
+                <div class="card-content">
+                    <h2>Horários</h2>
+                    <a href="{%url 'listaHorarios'%}"><button>Visualizar</button></a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.sp98dqfAOIqlRHJeA7XCVwHaHa?w=192&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Turmas">
+                <div class="card-content">
+                    <h2>Turmas</h2>
+                    <a href="{%url 'listaTurmas'%}"><button>Visualizar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

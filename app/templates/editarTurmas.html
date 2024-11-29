@@ -1,0 +1,13 @@
+<form method="POST"> <!--os métodos disponiveis são GET e POST, os dois funcinam para enviar dados, o POST envia os dados encapsulados no request-->
+    {% csrf_token %}
+    <label>Sala</label>
+    <input type="number"name="Sala" value="{{dadosTurmas.sala}}"/> 
+   
+    <label>Ano</label>
+    <input type="date"name="Ano" value="{{dadosTurmas.ano Y-m-d}}"/>
+   
+    <label>Nome</label>
+    <input type="text"name="Nome" value="{{dadosTurmas.nome}}"/>
+   
+    <input type="submit" value="atualizar"/>
+   </form>

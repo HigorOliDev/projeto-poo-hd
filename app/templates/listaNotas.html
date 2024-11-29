@@ -1,0 +1,27 @@
+<table border="1">
+    <thead>
+      <tr> <!--linha de cabeçalho-->
+         <th>Aluno</th>
+         <th>Turma</th>
+         <th>Disciplina</th>
+         <th>Nota</th>
+         <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for valor in listaNotas %}
+      <tr>
+          <td>{{valor.aluno}}</td>
+          <td>{{valor.turma}}</td>
+          <td>{{valor.disciplina}}</td>
+          <td>{{valor.nota}}</td>
+          <td>
+              <a href=""><img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" width="20px"></a>
+              <a href=""><img src="https://cdn-icons-png.flaticon.com/512/32/32355.png" width="20px"> </a>
+              <a href=""><img src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" width="20px">
+              </a>
+          </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
