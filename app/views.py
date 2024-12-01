@@ -146,4 +146,4 @@ def adicionarAluno(request):
     else:
         form = Alunoform()
     
-    return render(request, 'adicionar.html', {'form': form})
+    return render(request, 'adicionarAluno.html', {'form': form})
