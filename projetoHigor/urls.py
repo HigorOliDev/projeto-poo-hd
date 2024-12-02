@@ -1,7 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path
-from app.views import Gerenciar,index, listaAlunos,listaProfessores,listaDisciplinas,listaTurmas,listaHorarios, editarAlunos, editarProfessores,editarDisciplinas,editarTurmas,editarHorarios,deletarAlunos, deletarProfessor, deletarTurmas,deletarHorarios, deletarDisciplinas
+from app.views import Gerenciar,index, listaAlunos,listaProfessores,listaDisciplinas,listaTurmas,listaHorarios, editarAlunos,editarProfessores,editarDisciplinas,editarTurmas,editarHorarios,deletarAlunos, deletarProfessor, deletarTurmas,deletarHorarios, deletarDisciplinas, adicionarAluno
+
 
 urlpatterns = [
    
@@ -27,7 +28,8 @@ urlpatterns = [
     path('deletarProfessor/<int:id>', deletarProfessor, name="deletarProfessor"),
     path('deletarDisciplinas/<int:id>', deletarDisciplinas, name="deletarDisciplinas"),
     path('deletarTurmas/<int:id>', deletarTurmas, name="deletarTurmas"),
-    path('deletarHorarios/<int:id>', deletarHorarios, name=" deletarHorarios")
+    path('deletarHorarios/<int:id>', deletarHorarios, name=" deletarHorarios"),
+   
+    path('adicionarAluno/', adicionarAluno, name='adicionarAluno'),
 
-    
 ]

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from app.models import Aluno, Professor, Disciplina, Turma, Horario
+from .forms import Alunoform
+from .models import Aluno
 
 # Create your views here.
 
@@ -135,3 +137,13 @@ def deletarHorarios(request, id):
     horarios.delete()
     return redirect('listaHorarios')
 
+def adicionarAluno(request):
+    if request.method == 'POST':
+        form = Alunoform(request.POST)
+        if form.is_valid():
+            form.save()  # Salva o objeto no banco de dados
+            return redirect('listaAlunos')  # Redireciona para uma página de listagem
+    else:
+        form = Alunoform()
+    
+    return render(request, 'adicionarAluno.html', {'form': form})
