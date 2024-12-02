@@ -77,19 +77,20 @@ def editarDisciplinas(request, id):
         return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas})
     
 def editarTurmas(request, id):
-    turmas =Turma.objects.get(listaHorarios, id='id')
+   
+   turmas = Turma.objects.get(id=int(editarTurmas.id))
  
-    if request.method == "POST":
+   if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
         turmas.nome = request.POST.get("nome")
-        turmas.sala = request.POST.get("Sala")
-        turmas.ano = request.POST.get("Ano")  
+        turmas.sala = request.POST.get("sala")
+        turmas.ano = request.POST.get("ano")  
 
         # Salva as alterações
         turmas.save()
-        return redirect("listaProfessores")  # Redireciona após salvar
+        return redirect("listaTurmas")  # Redireciona após salvar
    
-    else:
+   else:
         # Renderiza o formulário com os dados do professor
         return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
 
@@ -98,9 +99,11 @@ def editarHorarios(request, id):
  
     if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
-        horarios.nome = request.POST.get("nome")
-        horarios.sala = request.POST.get("Sala")
-        horarios.ano = request.POST.get("Ano")  
+        horarios.turma = request.POST.get("turma")
+        horarios.disciplina = request.POST.get("disciplina")
+        horarios.dia_semana = request.POST.get("dia_semana") 
+        horarios.horario_inicio = request.POST.get("horario_inicio")  
+        horarios.horario_fim  = request.POST.get("horario_fim ")   
 
         horarios.save()
         return redirect("listahorarios")  # Redireciona após salvar
