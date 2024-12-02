@@ -78,7 +78,7 @@ def editarDisciplinas(request, id):
     
 def editarTurmas(request, id):
    
-   turmas = Turma.objects.get(id=int(editarTurmas.id))
+   turmas = Turma.objects.get(id=id)
  
    if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
