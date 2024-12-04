@@ -31,7 +31,6 @@ def editarAlunos(request, id):
         # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
-        aluno.turma = Turma.objects.get(id=int(request.POST.get("turma")))
         #print(request.POST.get("turma"))
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
