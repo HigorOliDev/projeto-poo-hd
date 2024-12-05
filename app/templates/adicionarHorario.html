@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Adicionar Aluno</title>
+    <title>Adicionar Horario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -10,11 +10,11 @@
     <nav class="navbar navbar-dark bg-success">
         <div class="container-success">
          <h1> 
-            <a class="navbar-brand" href="#">Adicionar Aluno</a>
+            <a class="navbar-brand" href="#">Adicionar Horario</a>
         </h1>
         </div>
         <div> 
-            <a href="{%url 'listaAlunos'%}"> <button class="btn btn-success me-md-2" type="button">Voltar</button></a>
+            <a href="{%url 'listaHorarios'%}"> <button class="btn btn-success me-md-2" type="button">Voltar</button></a>
         </div>  
       </nav>
 
@@ -22,20 +22,24 @@
       <form method="post" class="mt-4 p-3 border rounded bg-light">
         {% csrf_token %}
         <div class="mb-3">
-            <label for="id_field" class="form-label">Nome</label>
-            {{ form.nome }}
-        </div>
-        <div class="mb-3">
-            <label for="id_field" class="form-label">Matricula</label>
-            {{ form.matricula }}
-        </div>
-        <div class="mb-3">
-            <label for="id_field" class="form-label">Data de Nascimento</label>
-            {{ form.data_nascimento }}
-        </div>
-        <div class="mb-3">
-            <label for="id_field" class="form-label">Turma</label>
+            <label for="id_field" class="form-label">turma</label>
             {{ form.turma }}
+        </div>
+        <div class="mb-3">
+            <label for="id_field" class="form-label">disciplina</label>
+            {{ form.disciplina }}
+        </div>
+        <div class="mb-3">
+            <label for="id_field" class="form-label">dia_semana</label>
+            {{ form.dia_semana }}
+        </div>
+        <div class="mb-3">
+            <label for="id_field" class="form-label">horario_inicio</label>
+            {{ form.horario_inicio}}
+        </div>
+        <div class="mb-3">
+            <label for="id_field" class="form-label">horario_fim</label>
+            {{ form.horario_fim}}
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>

@@ -188,7 +188,7 @@ def adicionarHorario(request):
         form = Horarioform(request.POST)
         if form.is_valid():
             form.save()  # Salva o objeto no banco de dados
-            return redirect('listaHorario')  # Redireciona para uma página de listagem
+            return redirect('listaHorarios')  # Redireciona para uma página de listagem
     else:
         form = Horarioform()
     

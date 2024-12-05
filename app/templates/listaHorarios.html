@@ -18,7 +18,7 @@
       <a href="{%url 'listaTurmas'%}"> <button class="btn btn-success me-md-2" type="button">Turmas</button></a>
       <a href="{%url 'listaProfessores'%}"> <button class="btn btn-success me-md-2" type="button">Professores</button></a>
       <a href="{%url 'gerenciar'%}"> <button class="btn btn-success me-md-2" type="button">Home</button></a>
-      <button class="btn btn-success me-md-2" type="button">Adicionar</button>
+      <a href="{%url 'adicionarHorario'%}"> <button class="btn btn-success me-md-2" type="button">Adicionar</button> </a>
   </div>
  <!-- Os navbar estão transformando tudo em link para lista Professores-->
       
@@ -47,7 +47,7 @@
         <td>{{valor.horario_inicio}}</td>
         <td>{{valor.horario_fim}}</td>
         <td>
-          <a href="" class="btn btn-sm btn-warning me-1" title="Editar">
+          <a href="" class="btn btn-sm btn-warning me-1" title="Editar"> 
 
             <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" width="20px">
          </a>
