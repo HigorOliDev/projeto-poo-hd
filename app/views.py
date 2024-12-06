@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from app.models import Aluno, Professor, Disciplina, Turma, Horario
-from .forms import Alunoform
-from .models import Aluno
+from .forms import Alunoform, Professorform, Turmaform, Disciplinaform, Horarioform
+from .models import Aluno, Professor, Disciplina, Turma, Horario
 
 # Create your views here.
 
@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'index.html')
 def Gerenciar(request):
     return render(request, 'gerenciar.html')
-#OBS:index_int não esta sendo usado-----------------------
+
 def index_int(request,valor):
     return render(request,'index.html',{'valor':valor,'tipo':'int'})
 def listaAlunos(request):
@@ -22,8 +22,7 @@ def listaTurmas(request):
     return render(request, 'listaTurmas.html',{'listaTurmas':Turma.objects.all()})
 def listaHorarios(request):
     return render(request, 'listaHorarios.html',{'listaHorarios':Horario.objects.all()})
-#cirar um método para adicionar um novo alunou ou professor etc, criar tbm um template do tipo formulario para adicionardef editarProdutos(request,id):
-
+#Edita os Objetos
 def editarAlunos(request, id):
 
     aluno = Aluno.objects.get(id=id)
@@ -32,7 +31,6 @@ def editarAlunos(request, id):
         # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
-        aluno.turma = Turma.objects.get(id=int(request.POST.get("turma")))
         #print(request.POST.get("turma"))
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
@@ -78,19 +76,20 @@ def editarDisciplinas(request, id):
         return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas})
     
 def editarTurmas(request, id):
-    turmas =Turma(listaProfessores, id='id')
+   
+   turmas = Turma.objects.get(id=id)
  
-    if request.method == "POST":
+   if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
         turmas.nome = request.POST.get("nome")
-        turmas.sala = request.POST.get("Sala")
-        turmas.ano = request.POST.get("Ano")  
+        turmas.sala = request.POST.get("sala")
+        turmas.ano = request.POST.get("ano")  
 
         # Salva as alterações
         turmas.save()
-        return redirect("listaProfessores")  # Redireciona após salvar
+        return redirect("listaTurmas")  # Redireciona após salvar
    
-    else:
+   else:
         # Renderiza o formulário com os dados do professor
         return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
 
@@ -99,9 +98,11 @@ def editarHorarios(request, id):
  
     if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
-        horarios.nome = request.POST.get("nome")
-        horarios.sala = request.POST.get("Sala")
-        horarios.ano = request.POST.get("Ano")  
+        horarios.turma = request.POST.get("turma")
+        horarios.disciplina = request.POST.get("disciplina")
+        horarios.dia_semana = request.POST.get("dia_semana") 
+        horarios.horario_inicio = request.POST.get("horario_inicio")  
+        horarios.horario_fim  = request.POST.get("horario_fim ")   
 
         horarios.save()
         return redirect("listahorarios")  # Redireciona após salvar
@@ -137,6 +138,7 @@ def deletarHorarios(request, id):
     horarios.delete()
     return redirect('listaHorarios')
 
+#Adicona Objetos
 def adicionarAluno(request):
     if request.method == 'POST':
         form = Alunoform(request.POST)
@@ -147,3 +149,47 @@ def adicionarAluno(request):
         form = Alunoform()
     
     return render(request, 'adicionarAluno.html', {'form': form})
+
+def adicionarProfessor(request):
+    if request.method == 'POST':
+        form = Professorform(request.POST)
+        if form.is_valid():
+            form.save()  # Salva o objeto no banco de dados
+            return redirect('listaProfessores')  # Redireciona para uma página de listagem
+    else:
+        form = Professorform()
+    
+    return render(request, 'adicionarProfessor.html', {'form': form})
+
+def adicionarTurma(request):
+    if request.method == 'POST':
+        form = Turmaform(request.POST)
+        if form.is_valid():
+            form.save()  # Salva o objeto no banco de dados
+            return redirect('listaTurmas')  # Redireciona para uma página de listagem
+    else:
+        form = Turmaform()
+    
+    return render(request, 'adicionarTurma.html', {'form': form})
+
+def adicionarDisciplina(request):
+    if request.method == 'POST':
+        form = Disciplinaform(request.POST)
+        if form.is_valid():
+            form.save()  # Salva o objeto no banco de dados
+            return redirect('listaDisciplinas')  # Redireciona para uma página de listagem
+    else:
+        form = Disciplinaform()
+    
+    return render(request, 'adicionarDisciplinas.html', {'form': form})
+
+def adicionarHorario(request):
+    if request.method == 'POST':
+        form = Horarioform(request.POST)
+        if form.is_valid():
+            form.save()  # Salva o objeto no banco de dados
+            return redirect('listaHorarios')  # Redireciona para uma página de listagem
+    else:
+        form = Horarioform()
+    
+    return render(request, 'adicionarHorario.html', {'form': form})
