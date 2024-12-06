@@ -94,7 +94,7 @@ def editarTurmas(request, id):
         return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
 
 def editarHorarios(request, id):
-    horarios =Horario(listaHorarios, id='id')
+    horarios =Horario(listaHorarios, id)
  
     if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
