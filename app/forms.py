@@ -13,14 +13,15 @@ class Professorform(forms.ModelForm):
         fields = ['nome', 'codigo_professor', 'especialidade']
 
 class Turmaform(forms.ModelForm):
+    
     class Meta:
         model = Turma
-        fields = ['nome', 'sala', 'ano']
+        fields = ['nome_turma', 'sala', 'ano']
 
 class Disciplinaform(forms.ModelForm):
     class Meta:
         model = Disciplina
-        fields = ['nome', 'codigo_disciplina', 'professor']
+        fields = ['nome_disciplina', 'codigo_disciplina', 'professor']
 
 class Horarioform(forms.ModelForm):
     class Meta:

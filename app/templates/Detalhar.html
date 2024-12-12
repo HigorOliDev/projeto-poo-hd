@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apresentação do projeto de Programação Orientada a Objetos (POO) para gerenciamento escolar">
+    <title>Apresentação do Projeto - Gerenciamento Escolar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #08880a;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .breadcrumb {
+            display: flex;
+            list-style: none;
+            padding: 0.5rem 1rem;
+            background: #535954;
+            margin: 0;
+            border-radius: 4px;
+        }
+        .breadcrumb li {
+            margin-right: 0.5rem;
+        }
+        .breadcrumb li a {
+            text-decoration: none;
+            color: #04ea08;
+        }
+        .breadcrumb li a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb li::after {
+            content: ">";
+            margin-left: 0.5rem;
+        }
+        .breadcrumb li:last-child::after {
+            content: "";
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #08880a;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #08880a;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento Escolar</h1>
+        <p>Projeto de Programação Orientada a Objetos (POO)</p>
+    </header>
+
+    <nav>
+        <ul class="breadcrumb">
+            <li><a href="/">Início</a></li>
+            <li><a href="/gerenciar">Projeto</a></li>
+            <li><a href="/Categorias">Categorias</a></li>
+           
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h2>Sobre o Projeto</h2>
+            <p>
+                Este site foi desenvolvido como parte do projeto da disciplina de Programação Orientada a Objetos (POO).
+                O objetivo do site é fornecer uma solução eficiente para o gerenciamento escolar, abrangendo recursos 
+                como o cadastro de turmas, alunos, professores e o controle de informações escolares.
+            </p>
+        </section>
+
+        <section>
+            <h2>Autores</h2>
+            <ul>
+                <li>David Silva</li>
+                <li>Higor</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Objetivo</h2>
+            <p>
+                Criar um sistema que facilite a administração de uma escola, oferecendo funcionalidades como:
+            </p>
+            <ul>
+                <li>Gerenciamento de turmas e alunos</li>
+                <li>Cadastro de professores e disciplinas</li>
+                <li>Organização de horários e salas</li>
+                <li>Consulta e edição de informações de forma rápida e segura</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tecnologias Utilizadas</h2>
+            <p>
+                O desenvolvimento do site contou com o uso das seguintes tecnologias:
+            </p>
+            <ul>
+                <li>HTML5, Bootstrap e CSS3 para a estrutura e estilo</li>
+                <li>Python com Django para o backend</li>
+                <li>Banco de dados SQLite para armazenamento de informações</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 David Silva e Higor. Todos os direitos reservados.</p>
+        <p><a href="#">Voltar ao topo</a></p>
+    </footer>
+</body>
+</html>

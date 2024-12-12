@@ -20,7 +20,7 @@
         }
 
         .navbar {
-            background-color: #28A745;
+            background-color: #08880a;
             padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -36,12 +36,12 @@
         }
 
         .navbar a:hover {
-            color: #0056b3;
+            color: #ffffff;
         }
 
         .navbar .btn {
             padding: 5px 10px;
-            background-color: #0056b3;
+            background-color: #085757;
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
@@ -52,7 +52,31 @@
         .navbar .btn:hover {
             background-color: #003d82;
         }
-
+        .breadcrumb {
+            display: flex;
+            list-style: none;
+            padding: 0.5rem 1rem;
+            background: #08880a;
+            margin: 0;
+            border-radius: 4px;
+        }
+        .breadcrumb li {
+            margin-right: 0.5rem;
+        }
+        .breadcrumb li a {
+            text-decoration: none;
+            color: #fdfdfd;
+        }
+        .breadcrumb li a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb li::after {
+            content: ">";
+            margin-left: 0.5rem;
+        }
+        .breadcrumb li:last-child::after {
+            content: "";
+        }
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -107,16 +131,24 @@
         }
 
         .card-content button:hover {
-            background-color: #218838;
+            background-color: #08880a;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
         <div class="logo">
-            <a href="#">Logo</a>
+            <a href="#"> <img src="c:\Users\david\Downloads\Escola HD.png" alt="EscolaHD" width="50"></a>
            
         </div>
+        <div>
+            <ul class="breadcrumb">
+                <li><a href="/">Início</a></li>
+                <li><a href="/Detalhar">Detalhes</a></li>
+                <li><a href="/Categorias">Categorias</a></li>
+            </ul>
+        </div>
+        
         <div class="menu">
     
             <a href="{%url 'login'%}" class="btn">Sair</a>

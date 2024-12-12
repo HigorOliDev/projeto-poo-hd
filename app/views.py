@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from app.models import Aluno, Professor, Disciplina, Turma, Horario
 from .forms import Alunoform, Professorform, Turmaform, Disciplinaform, Horarioform
 from .models import Aluno, Professor, Disciplina, Turma, Horario
@@ -9,6 +9,10 @@ def index(request):
     return render(request, 'index.html')
 def Gerenciar(request):
     return render(request, 'gerenciar.html')
+def Detalhar(request): 
+    return render(request, 'Detalhar.html')
+def Categorias(request):
+    return render (request, 'Categorias.html')
 
 def index_int(request,valor):
     return render(request,'index.html',{'valor':valor,'tipo':'int'})
@@ -24,22 +28,21 @@ def listaHorarios(request):
     return render(request, 'listaHorarios.html',{'listaHorarios':Horario.objects.all()})
 #Edita os Objetos
 def editarAlunos(request, id):
+    aluno = get_object_or_404(Aluno, id=id)
+    turmas = Turma.objects.all()
 
-    aluno = Aluno.objects.get(id=id)
-    
     if request.method == "POST":
-        # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
-        #print(request.POST.get("turma"))
+        turma_id = request.POST.get("turma")
+        aluno.turma = get_object_or_404(Turma, id=turma_id)
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
         # Salva as alterações
         aluno.save()
-        return redirect("listaAlunos")  # Redireciona após salvar
+        return redirect("listaAlunos")
     else:
-        # Renderiza o formulário com os dados do aluno
-        return render(request, 'editarAlunos.html', {'dadosAluno': aluno})
+        return render(request, 'editarAlunos.html', {'dadosAluno': aluno, 'turmas': turmas})
 
 def editarProfessores(request, id):
    
@@ -60,20 +63,22 @@ def editarProfessores(request, id):
     
 def editarDisciplinas(request, id):
    
-    disciplinas =Disciplina(editarDisciplinas, id=id)
-    
+    disciplinas =  get_object_or_404(Disciplina,id=id)
+    professor = Professor.objects.all
     if request.method == "POST":
         # Atualiza os campos do professor com os dados enviados
-        disciplinas.nome = request.POST.get("nome")
+        disciplinas.nome_disciplina = request.POST.get("nome")
         disciplinas.codigo_disciplina = request.POST.get("codigo_disciplina")
-        disciplinas.professor = request.POST.get("professor")  # Removido o ponto
+        professor_id = request.POST.get("professor")
+        disciplinas.professor = get_object_or_404(Professor, id=professor_id)
+        
 
         # Salva as alterações
         disciplinas.save()
         return redirect("listaDisciplinas")  # Redireciona após salvar
     else:
         # Renderiza o formulário com os dados 
-        return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas})
+        return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas, 'dadosProfessor': professor })
     
 def editarTurmas(request, id):
    

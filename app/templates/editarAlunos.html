@@ -17,8 +17,12 @@
    
     <label>Turma</label>
     <select name="turma">
-        <option value="{{dadosAluno.turma.id}}">{{dadosAluno.turma.nome}}</option>
-    </select> 
+      {% for turma in turmas %}
+          <option value="{{ turma.id }}" {% if turma.id == dadosAluno.turma.id %}selected{% endif %}>
+              {{ turma.nome_turma }}
+          </option>
+      {% endfor %}
+  </select>
    
     <label>Data Nascimento</label>
     <input type="date" name="data_nascimento" value="{{dadosAluno.data_nascimento|date:'Y-m-d'}}"/>
