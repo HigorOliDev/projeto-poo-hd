@@ -28,12 +28,12 @@ class Disciplina(models.Model):
     
 
 class Turma(models.Model):
-    nome_turma = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
     sala = models.CharField(max_length=50, null=True)
     ano = models.CharField(max_length=4, null=True)
     
     def __str__(self):
-       return self. nome_turma
+       return self. nome
 
 class Horario(models.Model):
     turma= models.ForeignKey('Turma', on_delete=models.CASCADE)
@@ -43,7 +43,7 @@ class Horario(models.Model):
     horario_fim = models.TimeField()
     
     def __str__(self):
-        return f"{self.turma.nome_turma} - {self.disciplina.nome_disciplina} - ({self.dia_semana})"
+        return f"({self.turma.nome}) - ({self.disciplina.nome_disciplina}) - ({self.dia_semana})"
     
 
     

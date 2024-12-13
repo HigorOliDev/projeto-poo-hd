@@ -1,31 +1,63 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<nav class="navbar navbar-dark bg-success">
-    <div class="container-success">
-     <h1> <a class="navbar-brand" href="#">Editar Alunos</a>
-    </h1>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href="#">Editar Alunos</a>
+   </div>
+    <div> 
+      <a href="{%url 'listaAlunos'%}"> <button class="btn btn-success me-md-2" type="button">Voltar</button></a>
     </div>
-    
   </nav>
 
-<form method="POST"> <!--os métodos disponiveis são GET e POST, os dois funcinam para enviar dados, o POST envia os dados encapsulados no request-->
-    {% csrf_token %}
-    <label>Nome</label>
-    <input type="text"name="nome" value="{{dadosAluno.nome}}"/> 
-   
-    <label>Matricula</label>
-    <input type="text"name="matricula" value="{{dadosAluno.matricula}}"/>
-   
-    <label>Turma</label>
-    <select name="turma">
-      {% for turma in turmas %}
-          <option value="{{ turma.id }}" {% if turma.id == dadosAluno.turma.id %}selected{% endif %}>
-              {{ turma.nome_turma }}
-          </option>
-      {% endfor %}
-  </select>
-   
-    <label>Data Nascimento</label>
-    <input type="date" name="data_nascimento" value="{{dadosAluno.data_nascimento|date:'Y-m-d'}}"/>
-   
-    <input type="submit" value="atualizar"/>
-   </form>
+  <!-- Formulário -->
+  <div class="container mt-4">
+    <form method="POST" class="needs-validation" novalidate>
+      {% csrf_token %}
+      
+      <!-- Nome do Aluno -->
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" 
+               value="{{dadosAluno.nome}}" required>
+      </div>
+
+      <!-- Matricula -->
+      <div class="mb-3">
+        <label for="Matricula" class="form-label">Matricula</label>
+        <input type="text" class="form-control" id="matricula" name="matricula" value="{{dadosAluno.matricula}}" required>
+      </div>
+
+      <!-- turma -->
+      <div class="mb-3">
+        <label>Turma</label>
+        <select name="turma"class="form-control">
+             {% for turma in turmas %}<!--OPções-->
+                 <option value="{{ turma.id }}" {% if turma.id == dadosAluno.turma.id %}selected{% endif %}>
+                        {{ turma.nome }} <!--Faz aparecer o nome-->
+                </option>
+             {% endfor %}
+        </select>
+     </div>
+     <div class="mb-3">
+      <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="{{dadosAluno.data_nascimento|date:'Y-m-d'}}" required>
+    </div>
+     
+ 
+
+      <!-- Botão de Atualizar -->
+      <button type="submit" class="btn btn-success w-20">Atualizar</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

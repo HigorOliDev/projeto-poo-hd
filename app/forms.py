@@ -16,7 +16,7 @@ class Turmaform(forms.ModelForm):
     
     class Meta:
         model = Turma
-        fields = ['nome_turma', 'sala', 'ano']
+        fields = ['nome', 'sala', 'ano']
 
 class Disciplinaform(forms.ModelForm):
     class Meta:

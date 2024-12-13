@@ -20,15 +20,27 @@
     <form method="POST">
         {% csrf_token %}
 
-        <div class="mb-3">
-            <label for="turma" class="form-label">Turma</label>
-            <input type="text" id="turma" name="turma" class="form-control" value="{{dadoshorarios.turma}}" required>
-        </div>
+ <div class="mb-3">
+    <label>Turma</label>
+    <select name="turma">
+         {% for turma in turmas %}
+             <option value="{{ turma.id }}" {% if turma.id == dadosAluno.turma.id %}selected{% endif %}>
+                    {{ turma.nome }}
+            </option>
+         {% endfor %}
+    </select>
+ </div>
 
-        <div class="mb-3">
-            <label for="disciplina" class="form-label">Disciplina</label>
-            <input type="text" id="disciplina" name="disciplina" class="form-control" value="{{dadoshorarios.disciplina}}" required>
-        </div>
+ <div class="mb-3">
+    <label>Disciplina</label>
+    <select name="disciplina"class="form-control">
+         {% for disciplina in disciplina %}<!--OPções-->
+             <option value="{{ displina.id }}" {% if disciplina.id == dadoshorarios.disciplina.id %}selected{% endif %}>
+                    {{ disciplina.nome_disciplina }} <!--Faz aparecer o nome-->
+            </option>
+         {% endfor %}
+    </select>
+ </div>
 
         <div class="mb-3">
             <label for="dia_semana" class="form-label">Dia da Semana</label>

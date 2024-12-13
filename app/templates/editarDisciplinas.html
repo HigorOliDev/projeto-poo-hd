@@ -24,18 +24,20 @@
     <form method="POST" class="needs-validation" novalidate>
       {% csrf_token %}
       
+      <div class="mb-2">
+        <h2>Editanto Disciplina:</h2>
+      </div>
+      
       <!-- Campo Professor--> 
       <div class="mb-2">
-        <label for="professor" class="form-label">Professor</label>
-        <input type="text" class="form-control" id="professor" name="professor" 
-               value="{{dadosDisciplinas.professor}}" required>
-      </div>
-
-      <!-- Campo Nome da Disciplina -->
-      <div class="mb-2">
-        <label for="nome_disciplina" class="form-label">Nome da Disciplina</label>
-        <input type="text" class="form-control" id="nome_disciplina" name="nome_disciplina" 
-               value="{{dadosDisciplinas.nome_disciplina}}" required>
+        <label>Professor</label>
+         <select name="professor">
+         {% for professor in professor %}
+          <option value="{{ professor.id }}" {% if professor.id == dadosDisciplina.professor.id %}selected{% endif %}>
+              {{ professor.nome }}
+          </option>
+        {% endfor %}
+  </select>
       </div>
 
       <!-- Código da Disciplina -->

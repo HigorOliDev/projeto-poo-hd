@@ -4,11 +4,6 @@
   <nav class="navbar navbar-dark bg-success">
     <div class="container">
       <a class="navbar-brand" href="#">Editar Turmas</a>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Início</a></li>
-        <li class="breadcrumb-item"><a href="/Categorias">Categorias</a></li>
-        <li class="breadcrumb-item"><a href="/Detalhar">Detalhes</a></li>
-      </ol>
    </div>
    
     <div> 
@@ -22,20 +17,20 @@
     <form method="POST" class="needs-validation" novalidate>
       {% csrf_token %}
       
-      <!-- Código do Professor -->
+      <!-- Nome da turma -->
       <div class="mb-3">
-        <label for="nome_turma" class="form-label">Turma</label>
-        <input type="text" class="form-control" id="nome_turma" name="nome_turma" 
-               value="{{dadosTurmas.nome_turma}}" required>
+        <label for="nome" class="form-label">Turma</label>
+        <input type="text" class="form-control" id="nome" name="nome" 
+               value="{{dadosTurmas.turmas.nome}}" required>
       </div>
 
-      <!-- Nome -->
+      <!-- Ano -->
       <div class="mb-3">
         <label for="ano" class="form-label">Ano</label>
         <input type="number" class="form-control" id="ano" name="ano" value="{{dadosTurmas.ano}}" required>
       </div>
 
-      <!-- Especialidade -->
+      <!-- SAla -->
       <div class="mb-3">
         <label for="sala" class="form-label">Sala</label>
         <input type="text" class="form-control" id="sala" name="sala" 
