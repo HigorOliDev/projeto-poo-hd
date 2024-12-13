@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
+=======
+from django.shortcuts import render, redirect,get_object_or_404
+>>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
 from app.models import Aluno, Professor, Disciplina, Turma, Horario
 from .forms import Alunoform, Professorform, Turmaform, Disciplinaform, Horarioform
 from .models import Aluno, Professor, Disciplina, Turma, Horario
@@ -9,6 +13,9 @@ def index(request):
     return render(request, 'index.html')
 def Gerenciar(request):
     return render(request, 'gerenciar.html')
+def Detalhar(request): 
+    return render(request, 'Detalhar.html')
+
 
 def index_int(request,valor):
     return render(request,'index.html',{'valor':valor,'tipo':'int'})
@@ -22,24 +29,27 @@ def listaTurmas(request):
     return render(request, 'listaTurmas.html',{'listaTurmas':Turma.objects.all()})
 def listaHorarios(request):
     return render(request, 'listaHorarios.html',{'listaHorarios':Horario.objects.all()})
-#Edita os Objetos
+#Edita os Objetos-----------------------------------------------------------
 def editarAlunos(request, id):
+    aluno = get_object_or_404(Aluno, id=id)
+    turmas = Turma.objects.all()
 
-    aluno = Aluno.objects.get(id=id)
-    
     if request.method == "POST":
-        # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
+<<<<<<< HEAD
         print(request.POST.get("turma"))
+=======
+        turma_id = request.POST.get("turma")
+        aluno.turma = get_object_or_404(Turma, id=turma_id)
+>>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
         # Salva as alterações
         aluno.save()
-        return redirect("listaAlunos")  # Redireciona após salvar
+        return redirect("listaAlunos")
     else:
-        # Renderiza o formulário com os dados do aluno
-        return render(request, 'editarAlunos.html', {'dadosAluno': aluno})
+        return render(request, 'editarAlunos.html', {'dadosAluno': aluno, 'turmas': turmas})
 
 def editarProfessores(request, id):
    
@@ -60,20 +70,27 @@ def editarProfessores(request, id):
     
 def editarDisciplinas(request, id):
    
+<<<<<<< HEAD
     disciplinas =Disciplina(editarDisciplinas,id)
     
+=======
+    disciplinas =  get_object_or_404(Disciplina,id=id)
+    professor = Professor.objects.all
+>>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
     if request.method == "POST":
         # Atualiza os campos do professor com os dados enviados
-        disciplinas.nome = request.POST.get("nome")
+        #disciplinas.nome_disciplina = request.POST.get("nome")
         disciplinas.codigo_disciplina = request.POST.get("codigo_disciplina")
-        disciplinas.professor = request.POST.get("professor")  # Removido o ponto
+        professor_id = request.POST.get("professor")
+        disciplinas.professor = get_object_or_404(Professor, id=professor_id)
+        
 
         # Salva as alterações
         disciplinas.save()
         return redirect("listaDisciplinas")  # Redireciona após salvar
     else:
         # Renderiza o formulário com os dados 
-        return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas})
+        return render(request, 'editarDisciplinas.html', {'dadosDisciplina': disciplinas, 'professor': professor })
     
 def editarTurmas(request, id):
    
@@ -91,9 +108,10 @@ def editarTurmas(request, id):
    
    else:
         # Renderiza o formulário com os dados do professor
-        return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
+        return render(request, 'editarTurmas.html', {'dadosTurmas': turmas})
 
 def editarHorarios(request, id):
+<<<<<<< HEAD
     dadoshorarios = get_object_or_404(Horario, id=id)
  
     if request.method == "POST":
@@ -105,11 +123,33 @@ def editarHorarios(request, id):
         dadoshorarios.horario_fim  = request.POST.get("horario_fim ")   
 
         dadoshorarios.save()
+=======
+    horarios = get_object_or_404(Horario, id = id)
+    turmas = Turma.objects.all()
+    disciplina = Disciplina.objects.all()
+ 
+    if request.method == "POST":
+       # Atualiza os campos do professor com os dados enviados
+        turma_id = request.POST.get("turma")
+        horarios.turma = get_object_or_404(Turma, id = turma_id)
+
+        disciplina_id = request.POST.get("disciplinas")
+        horarios.disciplina = get_object_or_404(Disciplina, id = disciplina_id)
+        horarios.dia_semana = request.POST.get("dia_semana") 
+        horarios.horario_inicio = request.POST.get("horario_inicio")  
+        horarios.horario_fim  = request.POST.get("horario_fim ")   
+
+        horarios.save()
+>>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
         return redirect("listaHorarios")  # Redireciona após salvar
    
     else:
         # Renderiza o formulário com os dados do professor
+<<<<<<< HEAD
         return render(request, 'editarhorarios.html', {'dadoshorarios': dadoshorarios})
+=======
+        return render(request, 'editarhorarios.html', {'dadoshorarios': horarios, 'turmas': turmas,'disciplina': disciplina })
+>>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
 
 
 # Deleta os objetos -----------   
