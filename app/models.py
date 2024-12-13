@@ -43,11 +43,7 @@ class Horario(models.Model):
     horario_fim = models.TimeField()
     
     def __str__(self):
-<<<<<<< HEAD
-        return f"{self.turma.nome} - {self.disciplina.nome} - ({self.dia_semana})"
-=======
         return f"({self.turma.nome}) - ({self.disciplina.nome_disciplina}) - ({self.dia_semana})"
->>>>>>> f49ad9adb1454be8195bd7444c8f4f3c67336775
     
 
     
