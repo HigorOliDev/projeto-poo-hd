@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from app.models import Aluno, Professor, Disciplina, Turma, Horario
 from .forms import Alunoform, Professorform, Turmaform, Disciplinaform, Horarioform
 from .models import Aluno, Professor, Disciplina, Turma, Horario
@@ -31,7 +31,7 @@ def editarAlunos(request, id):
         # Atualiza os campos do aluno com os dados enviados
         aluno.nome = request.POST.get("nome")
         aluno.matricula = request.POST.get("matricula")  
-        #print(request.POST.get("turma"))
+        print(request.POST.get("turma"))
         aluno.data_nascimento = request.POST.get("data_nascimento")  
         
         # Salva as alterações
@@ -60,7 +60,7 @@ def editarProfessores(request, id):
     
 def editarDisciplinas(request, id):
    
-    disciplinas =Disciplina(editarDisciplinas, id=id)
+    disciplinas =Disciplina(editarDisciplinas,id)
     
     if request.method == "POST":
         # Atualiza os campos do professor com os dados enviados
@@ -94,22 +94,22 @@ def editarTurmas(request, id):
         return render(request, 'editarTurmas.html', {'dadosturmas': turmas})
 
 def editarHorarios(request, id):
-    horarios =Horario(listaHorarios, id='id')
+    dadoshorarios = get_object_or_404(Horario, id=id)
  
     if request.method == "POST":
        # Atualiza os campos do professor com os dados enviados
-        horarios.turma = request.POST.get("turma")
-        horarios.disciplina = request.POST.get("disciplina")
-        horarios.dia_semana = request.POST.get("dia_semana") 
-        horarios.horario_inicio = request.POST.get("horario_inicio")  
-        horarios.horario_fim  = request.POST.get("horario_fim ")   
+        dadoshorarios.turma = request.POST.get("turma")
+        dadoshorarios.disciplina = request.POST.get("disciplina")
+        dadoshorarios.dia_semana = request.POST.get("dia_semana") 
+        dadoshorarios.horario_inicio = request.POST.get("horario_inicio")  
+        dadoshorarios.horario_fim  = request.POST.get("horario_fim ")   
 
-        horarios.save()
-        return redirect("listahorarios")  # Redireciona após salvar
+        dadoshorarios.save()
+        return redirect("listaHorarios")  # Redireciona após salvar
    
     else:
         # Renderiza o formulário com os dados do professor
-        return render(request, 'editarhorarios.html', {'dadoshoraios': Horario})
+        return render(request, 'editarhorarios.html', {'dadoshorarios': dadoshorarios})
 
 
 # Deleta os objetos -----------   
